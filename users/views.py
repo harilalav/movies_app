@@ -16,29 +16,35 @@ class RegisterView(APIView):
 
     def post(self, request):
         serializer = UserRegistrationSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
 
-        if serializer.is_valid(raise_exception=True):
-            username = serializer.validated_data["username"]
-            password = serializer.validated_data["password"]
+        username = serializer.validated_data["username"]
+        password = serializer.validated_data["password"]
 
-            if not User.objects.filter(username=username).exists():
-                User.objects.create_user(**serializer.validated_data)
+        if not User.objects.filter(username=username).exists():
+            User.objects.create_user(**serializer.validated_data)
 
-            headers = {"Content-Type": "application/json"}
-            data = {
-                "username": username,
-                "password": password,
-            }
-            url = request.build_absolute_uri(reverse("token_obtain_pair"))
-            response = requests.post(url, headers=headers, data=json.dumps(data))
-            if response.status_code == 200:
-                response = response.json()
-                return Response(
-                    {"access_token": response["access"]},
-                    status=status.HTTP_200_OK,
-                )
-            elif response.status_code == 401:
-                return Response({"error": "Invalid Credentials."})
-            else:
-                return Response({"error": "Something went wrong."})
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        headers = {"Content-Type": "application/json"}
+        data = {
+            "username": username,
+            "password": password,
+        }
+        url = request.build_absolute_uri(reverse("token_obtain_pair"))
+        response = requests.post(
+            url,
+            headers=headers,
+            data=json.dumps(data),
+        )
+        if response.status_code == 200:
+            response = response.json()
+            return Response(
+                {"access_token": response["access"]},
+                status=status.HTTP_200_OK,
+            )
+        elif response.status_code == 401:
+            message = "Invalid Credentials."
+            status_code = status.HTTP_401_UNAUTHORIZED
+        else:
+            message = "Something went wrong."
+            status_code = status.HTTP_400_BAD_REQUEST
+        return Response({"error": message}, status=status_code)

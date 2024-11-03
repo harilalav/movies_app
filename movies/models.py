@@ -12,7 +12,9 @@ class Movie(models.Model):
 
 
 class MovieCollection(models.Model):
-    uuid = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
+    uuid = models.UUIDField(
+        default=uuid.uuid4, editable=False, primary_key=True
+    )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     description = models.TextField()

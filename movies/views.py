@@ -27,11 +27,15 @@ class MovieListView(APIView):
             # Update next and previous URLs
             if data.get("next"):
                 next_page = self.extract_page_number(data["next"])
-                data["next"] = f"{base_url}?page={next_page}" if next_page else None
+                data["next"] = (
+                    f"{base_url}?page={next_page}" if next_page else None
+                )
             if data.get("previous"):
                 previous_page = self.extract_page_number(data["previous"])
                 data["previous"] = (
-                    f"{base_url}?page={previous_page}" if previous_page else base_url
+                    f"{base_url}?page={previous_page}"
+                    if previous_page
+                    else base_url
                 )
             return Response(data, status=status.HTTP_200_OK)
         except Exception as e:
@@ -73,7 +77,10 @@ class MovieCollectionViewSet(viewsets.ModelViewSet):
         ).values_list("genres")[:3]
         response_data = {
             "is_success": True,
-            "data": {"collections": result, "favourite_genres": list(favorite_genres)},
+            "data": {
+                "collections": result,
+                "favourite_genres": list(favorite_genres),
+            },
         }
         return Response(response_data, status=status.HTTP_200_OK)
 
@@ -82,12 +89,15 @@ class MovieCollectionViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         instance = serializer.save(user=self.request.user)
         return Response(
-            MovieCollectionMinimalSerializer(instance).data, status=status.HTTP_200_OK
+            MovieCollectionMinimalSerializer(instance).data,
+            status=status.HTTP_200_OK,
         )
 
     def update(self, request, *args, **kwargs):
         collection = self.get_object()
-        serializer = self.get_serializer(collection, data=request.data, partial=True)
+        serializer = self.get_serializer(
+            collection, data=request.data, partial=True
+        )
         serializer.context["is_update"] = True
         serializer.is_valid(raise_exception=True)
         serializer.save()

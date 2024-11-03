@@ -20,7 +20,8 @@ class MovieCollectionSerializer(serializers.ModelSerializer):
         super(MovieCollectionSerializer, self).__init__(*args, **kwargs)
         """
         Check if the serializer is for updating and
-        Set 'required' to False for the fields that are not mandatory in updates
+        Set 'required' to False for the fields that 
+        are not mandatory in updates
         """
         if self.context.get("is_update", False):
             self.fields["title"].required = False

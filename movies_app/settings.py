@@ -124,8 +124,12 @@ MOVIE_API_URL = env("MOVIE_API_URL")
 
 # JWT
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(days=env.int("ACCESS_TOKEN_EXPIRE_DAYS")),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=env.int("ACCESS_TOKEN_EXPIRE_DAYS")),
+    "ACCESS_TOKEN_LIFETIME": timedelta(
+        days=env.int("ACCESS_TOKEN_EXPIRE_DAYS")
+    ),
+    "REFRESH_TOKEN_LIFETIME": timedelta(
+        days=env.int("ACCESS_TOKEN_EXPIRE_DAYS")
+    ),
     "AUTH_HEADER_TYPES": ("Bearer",),
     "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
     "USER_AUTHENTICATION_RULE": "rest_framework_simplejwt.authentication.default_user_authentication_rule",
@@ -133,7 +137,9 @@ SIMPLE_JWT = {
     "TOKEN_TYPE_CLAIM": "token_type",
     "TOKEN_USER_CLASS": "rest_framework_simplejwt.models.TokenUser",
     "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
-    "SLIDING_TOKEN_LIFETIME": timedelta(days=env.int("ACCESS_TOKEN_EXPIRE_DAYS")),
+    "SLIDING_TOKEN_LIFETIME": timedelta(
+        days=env.int("ACCESS_TOKEN_EXPIRE_DAYS"),
+    ),
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(
         days=env.int("ACCESS_TOKEN_EXPIRE_DAYS")
     ),
