@@ -1,7 +1,3 @@
-from django.urls import path
+from django.urls import include, path
 
-from . import views
-
-urlpatterns = [
-    path("", views.MovieListView.as_view(), name="movie_list"),
-]
+urlpatterns = []

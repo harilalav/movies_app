@@ -11,7 +11,7 @@ from rest_framework.views import APIView
 from .serializers import UserRegistrationSerializer
 
 
-class JoinView(APIView):
+class RegisterView(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):

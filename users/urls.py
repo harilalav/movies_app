@@ -6,6 +6,4 @@ from . import views
 urlpatterns = [
     # JWT
     path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
-    # Customer
-    path("join/", views.JoinView.as_view(), name="join"),
 ]
