@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 from general.views import RequestCountView, ResetRequestCountView
@@ -11,9 +11,9 @@ router.register(r"", MovieCollectionViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("register/", RegisterView.as_view(), name="join"),
+    path("register/", RegisterView.as_view(), name="register"),
     path("movies/", MovieListView.as_view(), name="movie_list"),
-    path("movies/", MovieListView.as_view(), name="movie_list"),
+    path("users/", include("users.urls")),
     path("request-count/", RequestCountView.as_view(), name="request_count"),
     path(
         "request-count/reset/",
