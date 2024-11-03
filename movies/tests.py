@@ -97,6 +97,27 @@ class MovieCollectionViewSetTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["description"], "New description only.")
 
+    def test_delete_collection(self):
+        self.assertTrue(
+            MovieCollection.objects.filter(uuid=self.collection.uuid).exists()
+        )
+        response = self.client.delete(
+            reverse("moviecollection-detail", args=[self.collection.uuid])
+        )
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertFalse(
+            MovieCollection.objects.filter(uuid=self.collection.uuid).exists()
+        )
+
+    def test_delete_collection_not_found(self):
+        # Attempt to delete a non-existing collection
+        response = self.client.delete(
+            reverse("moviecollection-detail", args=["non-existing-uuid"])
+        )
+
+        # Check the response status code for not found
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
 
 class MovieCollectionViewSetUnauthorizedTests(APITestCase):
     def test_unauthorized_access(self):
