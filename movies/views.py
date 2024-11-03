@@ -1,10 +1,11 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from .utils import fetch_movies_with_retries
+from urllib.parse import parse_qs, urlparse
 
 from django.urls import reverse
-from urllib.parse import urlparse, parse_qs
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from .utils import fetch_movies_with_retries
 
 
 class MovieListView(APIView):

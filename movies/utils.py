@@ -1,6 +1,7 @@
+import time
+
 import requests
 from django.conf import settings
-import time
 
 
 def fetch_movies_with_retries(request, retries=5, delay=1, backoff=2):
@@ -22,7 +23,6 @@ def fetch_movies_with_retries(request, retries=5, delay=1, backoff=2):
             return response.json()
         except requests.exceptions.RequestException as e:
             attempt += 1
-            print(attempt)
             if attempt == retries:
                 raise Exception("Failed to fetch movies after multiple retries") from e
             time.sleep(delay)

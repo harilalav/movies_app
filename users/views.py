@@ -1,14 +1,14 @@
 import json
+
+import requests
 from django.contrib.auth.models import User
-from django.contrib.auth.hashers import check_password
+from django.urls import reverse
 from rest_framework import status
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework_simplejwt.tokens import AccessToken
+
 from .serializers import UserRegistrationSerializer
-import requests
-from rest_framework.permissions import AllowAny
-from django.urls import reverse
 
 
 class JoinView(APIView):
@@ -33,7 +33,6 @@ class JoinView(APIView):
             response = requests.post(url, headers=headers, data=json.dumps(data))
             if response.status_code == 200:
                 response = response.json()
-                print(response)
                 return Response(
                     {"access_token": response["access"]},
                     status=status.HTTP_200_OK,
