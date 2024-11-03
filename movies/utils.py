@@ -24,8 +24,6 @@ def fetch_movies_with_retries(request, retries=5, delay=1, backoff=2):
         except requests.exceptions.RequestException as e:
             attempt += 1
             if attempt == retries:
-                raise Exception(
-                    "Failed to fetch movies after multiple retries"
-                ) from e
+                raise Exception("Failed to fetch movies after multiple retries") from e
             time.sleep(delay)
             delay *= backoff

@@ -27,15 +27,11 @@ class MovieListView(APIView):
             # Update next and previous URLs
             if data.get("next"):
                 next_page = self.extract_page_number(data["next"])
-                data["next"] = (
-                    f"{base_url}?page={next_page}" if next_page else None
-                )
+                data["next"] = f"{base_url}?page={next_page}" if next_page else None
             if data.get("previous"):
                 previous_page = self.extract_page_number(data["previous"])
                 data["previous"] = (
-                    f"{base_url}?page={previous_page}"
-                    if previous_page
-                    else base_url
+                    f"{base_url}?page={previous_page}" if previous_page else base_url
                 )
             return Response(data, status=status.HTTP_200_OK)
         except Exception as e:
@@ -95,9 +91,7 @@ class MovieCollectionViewSet(viewsets.ModelViewSet):
 
     def update(self, request, *args, **kwargs):
         collection = self.get_object()
-        serializer = self.get_serializer(
-            collection, data=request.data, partial=True
-        )
+        serializer = self.get_serializer(collection, data=request.data, partial=True)
         serializer.context["is_update"] = True
         serializer.is_valid(raise_exception=True)
         serializer.save()
