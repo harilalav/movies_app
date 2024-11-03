@@ -1,6 +1,7 @@
 from pathlib import Path
 import environ
 import os
+from datetime import timedelta
 
 env = environ.Env(DEBUG=(bool, False))
 
@@ -29,6 +30,7 @@ INSTALLED_APPS = [
     # 3rd party
     "rest_framework",
     "django_filters",
+    "rest_framework_simplejwt",
     # Custom
     "users",
     "general",
@@ -119,3 +121,33 @@ CACHES = {
 MOVIE_API_ID = env("MOVIE_API_ID")
 MOVIE_API_SECRET = env("MOVIE_API_SECRET")
 MOVIE_API_URL = env("MOVIE_API_URL")
+
+# JWT
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=env.int("ACCESS_TOKEN_EXPIRE_DAYS")),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=env.int("ACCESS_TOKEN_EXPIRE_DAYS")),
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
+    "USER_AUTHENTICATION_RULE": "rest_framework_simplejwt.authentication.default_user_authentication_rule",
+    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
+    "TOKEN_TYPE_CLAIM": "token_type",
+    "TOKEN_USER_CLASS": "rest_framework_simplejwt.models.TokenUser",
+    "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
+    "SLIDING_TOKEN_LIFETIME": timedelta(days=env.int("ACCESS_TOKEN_EXPIRE_DAYS")),
+    "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(
+        days=env.int("ACCESS_TOKEN_EXPIRE_DAYS")
+    ),
+}
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+}
