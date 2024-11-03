@@ -1,0 +1,344 @@
+{
+	"info": {
+		"_postman_id": "4f8bb90a-8575-4356-9fcb-2935a8855e04",
+		"name": "movies_app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24143837"
+	},
+	"item": [
+		{
+			"name": "join/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "admin41",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "User@123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/register/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movies/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNzM3OTQwLCJpYXQiOjE3MzA2NTE1NDAsImp0aSI6IjczNjQ5Mjk0ZDYyYTQwM2Q4NzAwMDc1NThmY2FlNTdmIiwidXNlcl9pZCI6Nn0.dPJLlykGAtL90Y7GsBICyK6icq8U9PUF5vqvxxW77HQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/movies/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"movies",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "collection/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNzM3OTQwLCJpYXQiOjE3MzA2NTE1NDAsImp0aSI6IjczNjQ5Mjk0ZDYyYTQwM2Q4NzAwMDc1NThmY2FlNTdmIiwidXNlcl9pZCI6Nn0.dPJLlykGAtL90Y7GsBICyK6icq8U9PUF5vqvxxW77HQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/collection/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"collection",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "collection/",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNzM3OTQwLCJpYXQiOjE3MzA2NTE1NDAsImp0aSI6IjczNjQ5Mjk0ZDYyYTQwM2Q4NzAwMDc1NThmY2FlNTdmIiwidXNlcl9pZCI6Nn0.dPJLlykGAtL90Y7GsBICyK6icq8U9PUF5vqvxxW77HQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Test\",\n    \"description\": \"Some dec\",\n    \"movies\": [\n        {\n            \"title\": \"Queerama\",\n            \"description\": \"50 years after decriminalisation of homosexuality in the UK, director Daisy Asquith mines the jewels of the BFI archive to take us into the relationships, desires, fears and expressions of gay men and women in the 20th century.\",\n            \"genres\": \"queen\",\n            \"uuid\": \"57baf4f4-c9ef-4197-9e4f-acf04eae5b4d\"\n        },\n        {\n            \"title\": \"Satana likuyushchiy\",\n            \"description\": \"In a small town live two brothers, one a minister and the other one a hunchback painter of the chapel who lives with his wife. One dreadful and stormy night, a stranger knocks at the door asking for shelter. The stranger talks about all the good things of the earthly life the minister is missing because of his puritanical faith. The minister comes to accept the stranger's viewpoint but it is others who will pay the consequences because the minister will discover the human pleasures thanks to, ehem, his sister- in -law… The tormented minister and his cuckolded brother will die in a strange accident in the chapel and later an infant will be born from the minister's adulterous relationship.\",\n            \"genres\": \"king\",\n            \"uuid\": \"163ce013-03e2-47e9-8afd-e7de7688c151\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/collection/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"collection",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "collection/edit",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNzM3OTQwLCJpYXQiOjE3MzA2NTE1NDAsImp0aSI6IjczNjQ5Mjk0ZDYyYTQwM2Q4NzAwMDc1NThmY2FlNTdmIiwidXNlcl9pZCI6Nn0.dPJLlykGAtL90Y7GsBICyK6icq8U9PUF5vqvxxW77HQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"movies\": [\n        {\n            \"title\": \"Queerama\",\n            \"description\": \"50 years after decriminalisation of homosexuality in the UK, director Daisy Asquith mines the jewels of the BFI archive to take us into the relationships, desires, fears and expressions of gay men and women in the 20th century.\",\n            \"genres\": \"test\",\n            \"uuid\": \"57baf4f4-c9ef-4197-9e4f-acf04eae5b4d\"\n        },\n        {\n            \"title\": \"Satana likuyushchiy\",\n            \"description\": \"In a small town live two brothers, one a minister and the other one a hunchback painter of the chapel who lives with his wife. One dreadful and stormy night, a stranger knocks at the door asking for shelter. The stranger talks about all the good things of the earthly life the minister is missing because of his puritanical faith. The minister comes to accept the stranger's viewpoint but it is others who will pay the consequences because the minister will discover the human pleasures thanks to, ehem, his sister- in -law… The tormented minister and his cuckolded brother will die in a strange accident in the chapel and later an infant will be born from the minister's adulterous relationship.\",\n            \"genres\": \"\",\n            \"uuid\": \"163ce013-03e2-47e9-8afd-e7de7688c151\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/collection/5957ad92-c644-4949-8246-a09cc58ab36a/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"collection",
+						"5957ad92-c644-4949-8246-a09cc58ab36a",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "collection/delete/",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNzM3OTQwLCJpYXQiOjE3MzA2NTE1NDAsImp0aSI6IjczNjQ5Mjk0ZDYyYTQwM2Q4NzAwMDc1NThmY2FlNTdmIiwidXNlcl9pZCI6Nn0.dPJLlykGAtL90Y7GsBICyK6icq8U9PUF5vqvxxW77HQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Test 1\",\n    \"description\": \"Some dec updates\",\n    \"movies\": [\n        {\n            \"title\": \"Queerama\",\n            \"description\": \"50 years after decriminalisation of homosexuality in the UK, director Daisy Asquith mines the jewels of the BFI archive to take us into the relationships, desires, fears and expressions of gay men and women in the 20th century.\",\n            \"genres\": \"test\",\n            \"uuid\": \"57baf4f4-c9ef-4197-9e4f-acf04eae5b4d\"\n        },\n        {\n            \"title\": \"Satana likuyushchiy\",\n            \"description\": \"In a small town live two brothers, one a minister and the other one a hunchback painter of the chapel who lives with his wife. One dreadful and stormy night, a stranger knocks at the door asking for shelter. The stranger talks about all the good things of the earthly life the minister is missing because of his puritanical faith. The minister comes to accept the stranger's viewpoint but it is others who will pay the consequences because the minister will discover the human pleasures thanks to, ehem, his sister- in -law… The tormented minister and his cuckolded brother will die in a strange accident in the chapel and later an infant will be born from the minister's adulterous relationship.\",\n            \"genres\": \"\",\n            \"uuid\": \"163ce013-03e2-47e9-8afd-e7de7688c151\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/collection/0ef4187d-da27-4153-823f-17729836adb5/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"collection",
+						"0ef4187d-da27-4153-823f-17729836adb5",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "request-count/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNzM3OTQwLCJpYXQiOjE3MzA2NTE1NDAsImp0aSI6IjczNjQ5Mjk0ZDYyYTQwM2Q4NzAwMDc1NThmY2FlNTdmIiwidXNlcl9pZCI6Nn0.dPJLlykGAtL90Y7GsBICyK6icq8U9PUF5vqvxxW77HQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Test 1\",\n    \"description\": \"Some dec updates\",\n    \"movies\": [\n        {\n            \"title\": \"Queerama\",\n            \"description\": \"50 years after decriminalisation of homosexuality in the UK, director Daisy Asquith mines the jewels of the BFI archive to take us into the relationships, desires, fears and expressions of gay men and women in the 20th century.\",\n            \"genres\": \"test\",\n            \"uuid\": \"57baf4f4-c9ef-4197-9e4f-acf04eae5b4d\"\n        },\n        {\n            \"title\": \"Satana likuyushchiy\",\n            \"description\": \"In a small town live two brothers, one a minister and the other one a hunchback painter of the chapel who lives with his wife. One dreadful and stormy night, a stranger knocks at the door asking for shelter. The stranger talks about all the good things of the earthly life the minister is missing because of his puritanical faith. The minister comes to accept the stranger's viewpoint but it is others who will pay the consequences because the minister will discover the human pleasures thanks to, ehem, his sister- in -law… The tormented minister and his cuckolded brother will die in a strange accident in the chapel and later an infant will be born from the minister's adulterous relationship.\",\n            \"genres\": \"\",\n            \"uuid\": \"163ce013-03e2-47e9-8afd-e7de7688c151\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/request-count/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"request-count",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "request-count/ reset",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNzM3OTQwLCJpYXQiOjE3MzA2NTE1NDAsImp0aSI6IjczNjQ5Mjk0ZDYyYTQwM2Q4NzAwMDc1NThmY2FlNTdmIiwidXNlcl9pZCI6Nn0.dPJLlykGAtL90Y7GsBICyK6icq8U9PUF5vqvxxW77HQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Test 1\",\n    \"description\": \"Some dec updates\",\n    \"movies\": [\n        {\n            \"title\": \"Queerama\",\n            \"description\": \"50 years after decriminalisation of homosexuality in the UK, director Daisy Asquith mines the jewels of the BFI archive to take us into the relationships, desires, fears and expressions of gay men and women in the 20th century.\",\n            \"genres\": \"test\",\n            \"uuid\": \"57baf4f4-c9ef-4197-9e4f-acf04eae5b4d\"\n        },\n        {\n            \"title\": \"Satana likuyushchiy\",\n            \"description\": \"In a small town live two brothers, one a minister and the other one a hunchback painter of the chapel who lives with his wife. One dreadful and stormy night, a stranger knocks at the door asking for shelter. The stranger talks about all the good things of the earthly life the minister is missing because of his puritanical faith. The minister comes to accept the stranger's viewpoint but it is others who will pay the consequences because the minister will discover the human pleasures thanks to, ehem, his sister- in -law… The tormented minister and his cuckolded brother will die in a strange accident in the chapel and later an infant will be born from the minister's adulterous relationship.\",\n            \"genres\": \"\",\n            \"uuid\": \"163ce013-03e2-47e9-8afd-e7de7688c151\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/request-count/reset/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"request-count",
+						"reset",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
