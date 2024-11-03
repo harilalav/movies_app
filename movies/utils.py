@@ -1,11 +1,9 @@
-# utils.py
 import requests
 from django.conf import settings
-from requests.auth import HTTPBasicAuth
 import time
 
 
-def fetch_movies_with_retries(retries=5, delay=1, backoff=2):
+def fetch_movies_with_retries(request, retries=5, delay=1, backoff=2):
     """
     Fetch a list of movies from the third-party API with retry logic.
     Retries up to `retries` times, doubling the delay with each attempt.
@@ -18,6 +16,7 @@ def fetch_movies_with_retries(retries=5, delay=1, backoff=2):
                 auth=(settings.MOVIE_API_ID, settings.MOVIE_API_SECRET),
                 timeout=5,
                 verify=False,
+                params=request.query_params,
             )
             response.raise_for_status()
             return response.json()
