@@ -8,7 +8,7 @@ class RequestCountMiddleware:
         self.get_response = get_response
         # Initialize the counter to zero if not set
         if cache.get(self.REQUEST_COUNT_KEY) is None:
-            cache.set(self.REQUEST_COUNT_KEY, 0)
+            cache.set(self.REQUEST_COUNT_KEY, 0, timeout=None)
 
     def __call__(self, request):
         # Increment the request count in Redis
