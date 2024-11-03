@@ -20,4 +20,5 @@ urlpatterns = [
         ResetRequestCountView.as_view(),
         name="reset_request_count",
     ),
+    path("collection/", include(router.urls)),
 ]

@@ -37,11 +37,12 @@ class MovieCollectionSerializer(serializers.ModelSerializer):
         return collection
 
     def update(self, instance, validated_data):
-        movies_data = validated_data.pop("movies")
+        movies_data = validated_data.pop("movies", None)
         instance = super().update(instance, validated_data)
-        for movie_data in movies_data:
-            movie, _ = Movie.objects.get_or_create(**movie_data)
-            instance.movies.add(movie)
+        if movies_data:
+            for movie_data in movies_data:
+                movie, _ = Movie.objects.get_or_create(**movie_data)
+                instance.movies.add(movie)
         return instance
 
 

@@ -10,12 +10,16 @@ class Movie(models.Model):
     description = models.TextField()
     genres = models.CharField(max_length=255, blank=True, null=True)
 
+    def __str__(self) -> str:
+        return self.title
+
 
 class MovieCollection(models.Model):
-    uuid = models.UUIDField(
-        default=uuid.uuid4, editable=False, primary_key=True
-    )
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     description = models.TextField()
     movies = models.ManyToManyField(Movie, related_name="movie_collections")
+
+    def __str__(self) -> str:
+        return self.title
