@@ -115,3 +115,7 @@ CACHES = {
         },
     }
 }
+
+MOVIE_API_ID = env("MOVIE_API_ID")
+MOVIE_API_SECRET = env("MOVIE_API_SECRET")
+MOVIE_API_URL = env("MOVIE_API_URL")

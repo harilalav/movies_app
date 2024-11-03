@@ -1,4 +1,6 @@
 from django.urls import path
 from . import views
 
-urlpatterns = []
+urlpatterns = [
+    path("", views.MovieListView.as_view(), name="movie_list"),
+]
