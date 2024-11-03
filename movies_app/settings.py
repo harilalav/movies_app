@@ -29,6 +29,10 @@ INSTALLED_APPS = [
     # 3rd party
     "rest_framework",
     "django_filters",
+    # Custom
+    "users",
+    "general",
+    "movies",
 ]
 
 MIDDLEWARE = [
@@ -39,7 +43,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "movies_app.middlewares.request_count",
+    "movies_app.middlewares.RequestCountMiddleware",
 ]
 
 ROOT_URLCONF = "movies_app.urls"
@@ -105,7 +109,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": env("CACHE_URL"),
+        "LOCATION": env("REDIS_URL"),
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
